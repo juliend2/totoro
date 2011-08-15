@@ -1,0 +1,20 @@
+h1. Bato is a funny blog engine
+
+"Bateau" is a french word that means boat.
+
+h2. Features
+
+# Write your posts in Textile
+# It outputs HTML!
+
+h2. OMG. Why PHP?! Why this bastard language?
+
+# I love cheap hosting.
+# Heroku gives me less control than cheap web hosts. Even if i don't need control for a blog like this. It just feels more right to me.
+# PHP is not that bad. Get over it.
+
+h2. Credits
+
+Huge props to "Toto":http://cloudhead.io/toto by Cloudhead for the inspiration.
+
+
