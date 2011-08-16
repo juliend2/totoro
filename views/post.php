@@ -1,1 +1,2 @@
-<?php echo textile($post['content']) ?>
+<h2><?php echo $post['title'] ?></h2>
+<?php echo $post['content'] ?>

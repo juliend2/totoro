@@ -1,4 +1,4 @@
 <?php foreach($posts as $post):?>
-  <h2><?php echo $post['title'] ?></h2>
-  <?php echo textile($post['content']) ?>
+  <h2><a href="<?php echo post_url($post) ?>"><?php echo $post['title'] ?></a></h2>
+  <?php echo $post['content'] ?>
 <?php endforeach ?>

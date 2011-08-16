@@ -1,4 +1,4 @@
-h1. Hello, World!
+title: Hello, World!
 
 This is my first post. Stay tuned!
 
