@@ -43,7 +43,8 @@ function get_post_settings($post_header) {
 }
 
 function get_post($year, $month, $day, $slug) {
-  $file = file_get_contents(POSTS_DIR."/$year-$month-$day-$slug.textile");
+  $file = @file_get_contents(POSTS_DIR."/$year-$month-$day-$slug.textile");
+  if (!$file) return false;
   $split_post_file = explode("\n\n", $file, 2);
   if (count($split_post_file) != 2) return false;
   $post_settings = get_post_settings($split_post_file[0]);
@@ -87,11 +88,11 @@ if (!isset($_GET['uri'])) {
       include "./views/layout.php";
     }
     else {
-      // 404 error
+      header("HTTP/1.0 404 Not Found");
     }
   } 
   else {
-    // 404 error
+    header("HTTP/1.0 404 Not Found");
   }
 }
 
