@@ -1,7 +1,7 @@
 <html>
 <head>
   <title><?php echo $config['blog_title'] ?></title>
-  <link href="styles.css" type="text/stylesheet" />
+  <link rel="stylesheet" href="<?php echo $config['base_url'] ?>/public/css/style.css" type="text/css" />
 </head>
 <body>
 
