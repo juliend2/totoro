@@ -6,7 +6,7 @@
 <body>
 
 <header>
-  <h1><?php echo $config['blog_title'] ?></h1>
+  <h1><a href="<?php echo $config['base_url'] ?>"><?php echo $config['blog_title'] ?></a></h1>
   <p class="description"><?php echo $config['blog_description'] ?></p>
 </header>
 

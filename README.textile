@@ -13,7 +13,7 @@ h2. OMG. Why PHP?! Why this bastard language?
 # Heroku gives me less control than cheap web hosts. Even if i don't need control for a blog like this. It just feels more right to me.
 # PHP is not that bad. Get over it.
 
-h2. Credits
+h2. Inspiration
 
 Huge props to "Toto":http://cloudhead.io/toto by Cloudhead for the inspiration.
 
