@@ -1,4 +1,4 @@
-h1. Bato is a funny blog engine
+h1. Bato is a minimalist PHP blog engine inspired by Toto
 
 "Bateau" is a french word that means boat.
 
@@ -10,11 +10,8 @@ h2. Features
 h2. OMG. Why PHP?! Why this bastard language?
 
 # I love cheap hosting.
-# Heroku gives me less control than cheap web hosts. Even if i don't need control for a blog like this. It just feels more right to me.
 # PHP is not that bad. Get over it.
 
 h2. Inspiration
 
-Huge props to "Toto":http://cloudhead.io/toto by Cloudhead for the inspiration.
-
-
+Huge props to Cloudhead for making "Toto":http://cloudhead.io/toto , which inspired me to build Bato.
