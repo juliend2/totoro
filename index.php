@@ -2,13 +2,13 @@
 
 include 'config.php';
 include 'lib/classTextile.php';
+include 'lib/php-markdown/markdown.php';
 
-define('POSTS_DIR', './posts');
+define('POSTS_DIR', $config['posts_dir']);
 
 $posts = array();
-$post_files = glob(POSTS_DIR."/*.textile");
+$post_files = glob(POSTS_DIR."/*.*");
 $current_post = array();
-
 
 // -------------------------------------------------
 // Functions
@@ -42,22 +42,39 @@ function get_post_settings($post_header) {
   return $settings;
 }
 
-function get_post($year, $month, $day, $slug) {
-  $file = @file_get_contents(POSTS_DIR."/$year-$month-$day-$slug.textile");
+// takes a file's basename and return it's extension if it exists
+function get_extension($basename) {
+  if       (file_exists(POSTS_DIR."/$basename.textile")) {
+    return 'textile';
+  } elseif (file_exists(POSTS_DIR."/$basename.md")) {
+    return 'md';
+  } elseif (file_exists(POSTS_DIR."/$basename.markdown")) {
+    return 'markdown';
+  } else { // file not found
+    return false;
+  }
+}
+
+function get_post($year, $month, $day, $slug, $ext='textile') {
+  $ext = get_extension("$year-$month-$day-$slug");
+  $file = @file_get_contents(POSTS_DIR."/$year-$month-$day-$slug.$ext");
   if (!$file) return false;
   $split_post_file = explode("\n\n", $file, 2);
   if (count($split_post_file) != 2) return false;
   $post_settings = get_post_settings($split_post_file[0]);
   if (!isset($post_settings['title'])) return false;
-  $post = array(
+  // set function to be called to compile in HTML:
+  if ($ext == 'md' || $ext == 'markdown') { $func = 'Markdown'; }
+  elseif ($ext == 'textile') { $func = $ext; }
+
+  return array(
     'year' => $year,
     'month' => $month,
     'day' => $day,
     'slug' => $slug,
     'title' => $post_settings['title'],
-    'content' => textile($split_post_file[1]),
+    'content' => isset($func) ? $func($split_post_file[1]) : $split_post_file[1]
   );
-  return $post;
 }
 
 // -------------------------------------------------
@@ -65,9 +82,8 @@ function get_post($year, $month, $day, $slug) {
 //
 
 foreach($post_files as $p) {
-  if (preg_match('/^\.\/posts\/(\d{4})-(\d{2})-(\d{2})-([^\.\/]+)\.textile$/i', $p, $matches)) {
-    $post = get_post($matches[1],$matches[2],$matches[3],$matches[4]);
-    $posts[] = $post;
+  if (preg_match('/^\.\/posts\/(\d{4})-(\d{2})-(\d{2})-([^\.\/]+)\.(textile|md|markdown)$/i', $p, $matches)) {
+    $posts[] = get_post($matches[1],$matches[2],$matches[3],$matches[4], $matches[5]);
   }
 }
 
@@ -81,9 +97,10 @@ if (!isset($_GET['uri'])) {
   $view = './views/home.php'; 
   include "./views/layout.php";
 } else {
+  // posts
   if (preg_match('/^\/(\d{4})\/(\d{2})\/(\d{2})\/([^\.\/]+)/i', $_GET['uri'], $matches)) {
-    $post_file = get_post($matches[1],$matches[2],$matches[3],$matches[4]);
-    if ($post_file) {
+    $post = get_post($matches[1],$matches[2],$matches[3],$matches[4]);
+    if ($post) {
       $view = './views/post.php'; 
       include "./views/layout.php";
     }

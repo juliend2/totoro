@@ -1,16 +1,11 @@
-h1. Bato is a minimalist PHP blog engine inspired by Toto
+h1. Bato is a minimalist PHP blog engine
 
-"Bateau" is a french word that means boat.
+"Bateau" is a french word that means Boat.
 
 h2. Features
 
-# Write your posts in Textile
+# Write your posts in Textile or Markdown
 # It outputs HTML!
-
-h2. OMG. Why PHP?! Why this bastard language?
-
-# I love cheap hosting.
-# PHP is not that bad. Get over it.
 
 h2. Inspiration
 
