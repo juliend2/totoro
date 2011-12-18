@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title><?php echo $config['blog_title'] ?></title>
   <link rel="stylesheet" href="<?php echo $config['base_url'] ?>/public/css/style.css" type="text/css" />
 </head>
