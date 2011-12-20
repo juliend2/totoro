@@ -5,6 +5,7 @@ include 'lib/classTextile.php';
 include 'lib/php-markdown/markdown.php';
 
 define('POSTS_DIR', $config['posts_dir']);
+ini_set('date.timezone', $config['date.timezone']);
 
 $posts = array();
 $post_files = glob(POSTS_DIR."/*.*");
