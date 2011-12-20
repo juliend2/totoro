@@ -14,6 +14,15 @@ $current_post = array();
 // Functions
 //
 
+
+function truncate($string, $max = 20, $replacement = '…') {
+  if (strlen($string) <= $max) {
+    return $string;
+  }
+  $leave = $max - strlen ($replacement);
+  return substr_replace($string, $replacement, $leave);
+}
+
 function textile($input) {
   $textile = new Textile();
   return $textile->textileThis($input);
@@ -74,7 +83,7 @@ function get_post($year, $month, $day, $slug, $ext='textile') {
     'month' => $month,
     'day' => $day,
     'slug' => $slug,
-    'title' => $post_settings['title'],
+    'title' => trim($post_settings['title']),
     'content' => isset($func) ? $func($split_post_file[1]) : $split_post_file[1]
   );
 }
@@ -109,8 +118,9 @@ if (!isset($_GET['uri'])) {
     else {
       header("HTTP/1.0 404 Not Found");
     }
-  } 
-  else {
+  } elseif ($_GET['uri'] == '/rss') {
+    include "./views/rss.php";
+  } else {
     header("HTTP/1.0 404 Not Found");
   }
 }
