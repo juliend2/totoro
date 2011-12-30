@@ -8,6 +8,7 @@ Features
 
 * RSS feed
 * all the posts are stored in the file system, in Markdown, Textile or HTML
+* simple file-based caching of pages
 
 Installation
 ------------
@@ -22,6 +23,14 @@ Installation
 5. (facultative) if you wish to host your bato blog in a subdirectory, you'll need to
    uncomment and customize the `RewriteBase /yoursubdirectory/` line in .htaccess, to match
    your subdirectory
+
+Todo
+----
+
+* Disqus comments
+* display only an excerpt of the posts in home view (maybe without html tags,
+  like in WordPress)
+* a decent default theme
 
 Thanks
 ------
