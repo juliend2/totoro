@@ -18,7 +18,8 @@ Installation
    title in the first line of your post. Otherwise, bad things can happen.
    You'll also need to name your file using this format:
    "`<YYYY-MM-DD>-<post-slug>.<format>`"
-4. (facultative) if you wish to host your bato blog in a subdirectory, you'll need to
+4. make the cache directory writable: `chmod a+w cache/`
+5. (facultative) if you wish to host your bato blog in a subdirectory, you'll need to
    uncomment and customize the `RewriteBase /yoursubdirectory/` line in .htaccess, to match
    your subdirectory
 
