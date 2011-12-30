@@ -8,7 +8,7 @@ $posts = grab_posts($post_files);
 
 // caching variables:
 $cachename = has_uri() ? strtr($_GET['uri'], '/', ':') : "index";
-$cachefilename = "cache/{$cachename}.html";
+$cachefilename = $config['cache_dir'] .'/'. $cachename . ".html";
 
 // display cache if the file exists:
 // TODO: automatically expire the cache after a certain time

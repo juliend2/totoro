@@ -23,15 +23,6 @@ Installation
    uncomment and customize the `RewriteBase /yoursubdirectory/` line in .htaccess, to match
    your subdirectory
 
-### Precisions for hosting a Bato blog on Heroku
-
-5. use the Cedar stack for your app (for PHP support): `heroku create myblog --stack cedar`
-6. set an environment variable to let Bato know that you're in
-   production: `heroku config:add BATO_ENV=production`
-7. ensure you check for BATO_ENV when setting base_url in config.php. Have
-   something like this: `empty($_ENV['BATO_ENV']) ? "http://localhost/bato" : "http://batoblog.heroku.com"`
-8. git push heroku master
-
 Thanks
 ------
 
