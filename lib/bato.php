@@ -90,3 +90,7 @@ function grab_posts($post_files) {
   }
   return $posts;
 }
+
+function has_uri() {
+  return isset($_GET['uri']);
+}
