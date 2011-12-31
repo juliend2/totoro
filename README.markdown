@@ -28,8 +28,6 @@ Installation
 Todo
 ----
 
-* display only an excerpt of the posts in home view (maybe without html tags,
-  like in WordPress)
 * a decent default theme
 
 Thanks

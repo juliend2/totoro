@@ -102,6 +102,7 @@ function theme_url() {
   return $config['base_url'] . '/themes/' . $config['theme'];
 }
 
+// took from: http://snippets.dzone.com/posts/show/7125
 function truncate_html($text, $length, $suffix = '&hellip;', $isHTML = true){
   $i = 0;
   $simpleTags=array('br'=>true,'hr'=>true,'input'=>true,'image'=>true,'link'=>true,'meta'=>true);
