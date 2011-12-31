@@ -3,9 +3,6 @@
   Options +Indexes
   RewriteEngine on
 
-  # if your app is in a subfolder
-  # RewriteBase /yoursubdirectory/ 
-
   # test string is a valid files
   RewriteCond %{SCRIPT_FILENAME} !-f
   # test string is a valid directory
