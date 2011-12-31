@@ -9,6 +9,7 @@ Features
 * RSS feed
 * all the posts are stored in the file system, in Markdown, Textile or HTML
 * simple file-based caching of pages
+* Disqus comments
 
 Installation
 ------------
@@ -27,7 +28,6 @@ Installation
 Todo
 ----
 
-* Disqus comments
 * display only an excerpt of the posts in home view (maybe without html tags,
   like in WordPress)
 * a decent default theme
@@ -35,7 +35,7 @@ Todo
 Thanks
 ------
 
-Bato is inspired from [Toto](http://cloudhead.io/toto). Give it a shot, it's
+Bato is inspired by [Toto](http://cloudhead.io/toto). Give it a shot, it's
 pretty cool.
 
 MIT License

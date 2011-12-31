@@ -8,4 +8,5 @@ $config = array(
   'cache_dir' => './cache',
   'max' => 150,
   'date.timezone' => 'America/Montreal', // see: http://www.php.net/manual/fr/timezones.php
+  // 'disqus_shortname' => '', // subscribe to disqus.com to get your shortname
 );
