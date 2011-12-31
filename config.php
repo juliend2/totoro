@@ -4,6 +4,7 @@ $config = array(
   'base_url' => empty($_ENV['BATO_ENV']) ? "http://localhost/bato" : "http://batoblog.heroku.com",
   'blog_title' => "My Blog",
   'blog_description' => "This is a brand new Bato Blog.",
+  'theme' => 'default',
   'posts_dir' => './posts',
   'cache_dir' => './cache',
   'max' => 150,

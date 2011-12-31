@@ -6,25 +6,6 @@ include 'lib/php-markdown/markdown.php';
 define('POSTS_DIR', $config['posts_dir']);
 ini_set('date.timezone', $config['date.timezone']);
 
-function truncate($string, $max = 20, $replacement = '…') {
-  if (strlen($string) <= $max) {
-    return $string;
-  }
-  $leave = $max - strlen ($replacement);
-  return substr_replace($string, $replacement, $leave);
-}
-
-function textile($input) {
-  $textile = new Textile();
-  return $textile->textileThis($input);
-}
-
-function pr($var) {
-  echo '<pre>';
-  print_r($var);
-  echo '</pre>';
-}
-
 function post_url($post) {
   global $config;
   return "{$config['base_url']}/{$post['year']}/{$post['month']}/{$post['day']}/{$post['slug']}";
@@ -91,6 +72,33 @@ function grab_posts($post_files) {
   return $posts;
 }
 
+// Helper functions
+
 function has_uri() {
   return isset($_GET['uri']);
 }
+
+function truncate($string, $max = 20, $replacement = '…') {
+  if (strlen($string) <= $max) {
+    return $string;
+  }
+  $leave = $max - strlen ($replacement);
+  return substr_replace($string, $replacement, $leave);
+}
+
+function textile($input) {
+  $textile = new Textile();
+  return $textile->textileThis($input);
+}
+
+function pr($var) {
+  echo '<pre>';
+  print_r($var);
+  echo '</pre>';
+}
+
+function theme_url() {
+  global $config;
+  return $config['base_url'] . '/' . $config['theme'];
+}
+

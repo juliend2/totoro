@@ -22,21 +22,21 @@ ob_start(); // START output buffer (for caching)
 // Basic URL Routing:
 if (!has_uri()) {
   // home
-  $view = './views/home.php'; 
-  include "./views/layout.php";
+  $view = "./themes/{$config['theme']}/home.php"; 
+  include "./themes/{$config['theme']}/layout.php";
 } else {
   // posts
   if (preg_match('/^\/(\d{4})\/(\d{2})\/(\d{2})\/([^\.\/]+)/i', $_GET['uri'], $matches)) {
     $post = get_post($matches[1],$matches[2],$matches[3],$matches[4]);
     if ($post) {
-      $view = './views/post.php'; 
-      include "./views/layout.php";
+      $view = "./themes/{$config['theme']}/post.php"; 
+      include "./themes/{$config['theme']}/layout.php";
     }
     else {
       header("HTTP/1.0 404 Not Found");
     }
   } elseif ($_GET['uri'] == '/rss') {
-    include "./views/rss.php";
+    include "./themes/{$config['theme']}/rss.php";
   } else {
     header("HTTP/1.0 404 Not Found");
   }
@@ -46,6 +46,5 @@ if (!has_uri()) {
 $fp = fopen($cachefilename, 'w'); 
 fwrite($fp, ob_get_contents());
 fclose($fp);
-ob_end_flush(); 
-// END output buffer
+ob_end_flush(); // END output buffer
 
