@@ -12,7 +12,7 @@ $cachefilename = $config['cache_dir'] .'/'. $cachename . ".html";
 
 // display cache if the file exists:
 // TODO: automatically expire the cache after a certain time
-if (file_exists($cachefilename)) { 
+if (file_exists($cachefilename) && !empty($_ENV['BATO_ENV']) && $_ENV['BATO_ENV'] == 'production') { 
   include $cachefilename;
   exit;
 }
