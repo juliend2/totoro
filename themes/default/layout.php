@@ -19,7 +19,7 @@
 </section>
 
 <footer>
-Julien Desrosiers. [<a href="<?php echo $config['base_url']?>/rss">rss</a>]
+<?php echo $config['author_name'] ?>. [<a href="<?php echo $config['base_url'] ?>/rss">rss</a>]
 </footer>
 
 </body>

@@ -25,11 +25,6 @@ Installation
 5. (facultative) if you wish to have Disqus comments, first create an account
    on disqus.com. Paste the 'disqus_shortname' in your config.php.
 
-Todo
-----
-
-* a decent default theme
-
 Thanks
 ------
 
