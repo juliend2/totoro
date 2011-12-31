@@ -10,6 +10,7 @@ Features
 * all the posts are stored in the file system, in Markdown, Textile or HTML
 * simple file-based caching of pages
 * Disqus comments
+* Themeable (includes a simple default theme)
 
 Installation
 ------------
