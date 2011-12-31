@@ -99,6 +99,6 @@ function pr($var) {
 
 function theme_url() {
   global $config;
-  return $config['base_url'] . '/' . $config['theme'];
+  return $config['base_url'] . '/themes/' . $config['theme'];
 }
 
