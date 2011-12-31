@@ -1,0 +1,50 @@
+// colors
+@txt: #333;
+@links: #0003AD;
+@highlight_bg: #929090;
+
+body {
+  /* new Linux- and Windows-friendly sans-serif font stack: http://mky.be/fontstack */
+  font: 13px Helmet, Freesans, sans-serif;
+  width: 650px;
+  margin: 0 auto;
+}
+
+/* we like off-black for text */
+body, select, input, textarea { color: @txt; }
+
+a { color: @links; }
+a:link { -webkit-tap-highlight-color: #fcd700; }
+a:hover { color: lighten(@links, 20%); text-decoration: none; }
+
+/* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
+::-moz-selection{ background: #fcd700; color: #fff; text-shadow: none; }
+::selection { background: @highlight_bg; color: #fff; text-shadow: none; } 
+
+ins { background-color: #FDFFC1; color: @txt; text-decoration: none; }
+mark { background-color: #FDFFC1; color: @txt; font-style: italic; font-weight: bold; }
+
+header {
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+  h1 { font-size: 26px; margin: 17px 0; }
+  a { color: @txt; text-decoration: none; }
+  p { margin: 12px 0; }
+}
+
+.main {
+  h2 { font-size: 17px; margin: 14px 0; }
+  h3 { font-size: 12px; margin: 12px 0; }
+  #disqus_thread {
+    border-top: 1px dotted #aaa;
+    padding-top: 10px;
+    margin-top: 20px;
+  }
+}
+
+footer {
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid black;
+}
+

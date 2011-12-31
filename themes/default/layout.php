@@ -3,7 +3,9 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title><?php echo $config['blog_title'] ?></title>
-  <link rel="stylesheet" href="<?php echo theme_url() ?>/css/style.css" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo theme_url() ?>/css/reset.css"/>
+  <link rel="stylesheet/less" type="text/css" href="<?php echo theme_url() ?>/css/styles.less"/>
+  <script src="<?php echo theme_url() ?>/js/less-1.1.5.min.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -16,10 +18,8 @@
   <?php include $view ?>
 </section>
 
-<section class="sidebar">
-</section>
-
 <footer>
+Julien Desrosiers. [<a href="<?php echo $config['base_url']?>/rss">rss</a>]
 </footer>
 
 </body>
