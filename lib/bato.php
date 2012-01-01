@@ -69,7 +69,7 @@ function grab_posts($post_files) {
       $posts[] = get_post($matches[1],$matches[2],$matches[3],$matches[4], $matches[5]);
     }
   }
-  return $posts;
+  return array_reverse($posts);
 }
 
 // Helper functions
