@@ -2,12 +2,17 @@
 @txt: #333;
 @links: #0003AD;
 @highlight_bg: #929090;
+@background: #FCFCFC;
+
+// dimensions
+@layout_width: 650px;
 
 body {
   /* new Linux- and Windows-friendly sans-serif font stack: http://mky.be/fontstack */
   font: 16px Helmet, Freesans, sans-serif;
-  width: 650px;
+  width: @layout_width;
   margin: 0 auto;
+  background: @background;
 }
 
 /* we like off-black for text */
@@ -34,11 +39,22 @@ header {
 .main {
   h2 { font-size: 19px; margin: 25px 0 19px 0; }
   h3 { font-size: 18px; margin: 24px 0 18px 0; }
+  h3.date { font-size: 16px; margin: 12px 0 12px 0; }
   h4 { font-size: 17px; margin: 23px 0 17px 0; }
   h5 { font-size: 16px; margin: 22px 0 16px 0; }
   h6 { font-size: 16px; margin: 22px 0 15px 0; }
 
-  pre { background: #111; color: #eee; padding: 4px 3px; margin: 12px 0; }
+  pre, code {
+    background: #111; 
+    color: #eee;  
+  }
+  pre {
+    margin: 12px 0; 
+    padding: 5px 4px; 
+  }
+  pre code {
+    display: block;
+  }
 
   #disqus_thread {
     border-top: 1px dotted #aaa;
@@ -49,8 +65,8 @@ header {
 }
 
 footer {
-  padding-top: 10px;
-  margin-top: 10px;
+  padding: 10px 0 20px 0;
+  margin-top: 20px;
   border-top: 1px solid black;
 }
 
