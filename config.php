@@ -2,7 +2,7 @@
 
 $config = array(
   'author_name' => 'John Doe',
-  'base_url' => empty($_ENV['BATO_ENV']) ? "http://localhost/bato" : "http://batoblog.heroku.com",
+  'base_url' => empty($_ENV['BATO_ENV']) ? "http://localhost/bato" : "http://your-production-url.com",
   'blog_title' => "My Blog",
   'blog_description' => "This is a brand new Bato Blog.",
   'theme' => 'default',
