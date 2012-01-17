@@ -19,12 +19,12 @@ Installation
 2. modify the content of config.php to suit your needs (base_url, title,
    description, etc).
 3. remove demo posts in posts/, and write your own first post. Don't forget to add a
-   title in the first line of your post. Otherwise, bad things can happen.
+   title in the first line of your post. 
    You'll also need to name your file using this format:
    "`<YYYY-MM-DD>-<post-slug>.<format>`"
 4. make the cache directory writable: `chmod a+w cache/`
-5. (facultative) if you wish to have Disqus comments, first create an account
-   on disqus.com. Paste the 'disqus_shortname' in your config.php.
+5. (optional) if you wish to have Disqus comments, first create an account
+   on disqus.com. Then paste the 'disqus_shortname' in your config.php.
 
 Thanks
 ------
