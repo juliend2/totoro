@@ -16,7 +16,7 @@ Installation
 ------------
 
 1. copy the content of this repository into your document root folder
-2. modify the content of config.php to suit your needs (base_url, title,
+2. modify the content of config.php to suit your needs (author_name, base_url, title,
    description, etc).
 3. remove demo posts in posts/, and write your own first post. Don't forget to add a
    title in the first line of your post. 

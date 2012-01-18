@@ -36,6 +36,7 @@ if (!has_uri()) {
       header("HTTP/1.0 404 Not Found");
     }
   } elseif ($_GET['uri'] == '/rss') {
+    header("Content-Type: application/rss+xml; charset=utf-8");
     include "./themes/{$config['theme']}/rss.php";
   } else {
     header("HTTP/1.0 404 Not Found");
