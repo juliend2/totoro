@@ -3,6 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title><?php echo $config['blog_title'] ?></title>
+  <base href="<?php echo $config['base_url'] ?>/" />
   <meta name="description" content="<?php echo $config['blog_description'] ?>" />
   <link rel="stylesheet" type="text/css" href="<?php echo theme_url() ?>/css/reset.css"/>
   <link rel="stylesheet/less" type="text/css" href="<?php echo theme_url() ?>/css/styles.less"/>
