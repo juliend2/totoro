@@ -19,7 +19,6 @@
 
 <section class="main">
   <?php include $view ?>
-</section>
 
 <footer>
   &copy; <?php echo date('Y') ?> <?php echo $config['author_name'] ?>. <br/>Powered by <a href="https://github.com/juliend2/bato">Bato</a>.

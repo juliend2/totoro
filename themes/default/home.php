@@ -9,9 +9,11 @@ $index = isset($_GET['page']) ? $_GET['page'] : 1;
   <?php echo excerpt($post['content']) ?> 
 <?php endforeach ?>
 
+</section>
+
 <!-- Pagination: -->
-<?php if (count($page_posts) > 0): ?>
-<ul>
+<?php if (count($page_posts) > 1): ?>
+<ul class="pagination">
   <?php for ($i=1; $i-1<count($page_posts); $i++): ?>
     <li <?php echo $index==$i?'class="current"':''; ?>>
       <?php if ($index==$i): ?>

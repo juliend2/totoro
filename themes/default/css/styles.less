@@ -22,7 +22,7 @@ a { color: @links; }
 a:hover { color: lighten(@links, 20%); text-decoration: none; }
 
 /* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
-::-moz-selection{ background: #fcd700; color: #fff; text-shadow: none; }
+::-moz-selection{ background: @highlight_bg; color: #fff; text-shadow: none; }
 ::selection { background: @highlight_bg; color: #fff; text-shadow: none; } 
 
 ins { background-color: #FDFFC1; color: @txt; text-decoration: none; }
@@ -67,6 +67,29 @@ header {
 
 }
 
+.pagination {
+  text-align: center;
+  margin-top: 18px; 
+  padding: 10px 0 10px 0;
+  border-top: 1px dotted #333;
+  // border-bottom: 1px dotted #333;
+  li { 
+    display: inline;
+    a, span {
+      padding: 2px 3px;
+      min-width: 19px;
+      display: inline-block;
+      background: #333;
+    }
+    a {
+      color: #ccc;
+    }
+    span {
+      color: white;
+    }
+  }
+}
+
 footer {
   font-size: 14px;
   padding: 10px 0 20px 0;
@@ -77,4 +100,7 @@ footer {
   a { color: desaturate(lighten(@links, 30%), 30%); }
 }
 
+.pagination ~ footer {
+  margin-top: 0;
+}
 
