@@ -21,7 +21,7 @@
   <?php include $view ?>
 
 <footer>
-  &copy; <?php echo date('Y') ?> <?php echo $config['author_name'] ?>. <br/>Powered by <a href="https://github.com/juliend2/bato">Bato</a>.
+  &copy; <?php echo date('Y') ?> <?php echo $config['author_name'] ?>. <br/>Powered by <a href="https://github.com/juliend2/totoro">Totoro</a>.
 </footer>
 
 </body>

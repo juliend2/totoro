@@ -2,9 +2,9 @@
 
 $config = array(
   'author_name' => 'John Doe',
-  'base_url' => empty($_ENV['BATO_ENV']) ? "http://localhost/bato" : "http://your-production-url.com",
+  'base_url' => empty($_ENV['TOTORO_ENV']) ? "http://localhost/totoro" : "http://your-production-url.com",
   'blog_title' => "My Blog",
-  'blog_description' => "This is a brand new Bato Blog.",
+  'blog_description' => "This is a brand new Totoro Blog.",
   'theme' => 'default',
   'posts_dir' => './posts',
   'cache_dir' => './cache',

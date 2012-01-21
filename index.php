@@ -1,5 +1,5 @@
 <?php
-include 'lib/bato.php';
+include 'lib/totoro.php';
 
 // posts variables:
 $post_files = glob(POSTS_DIR."/*.*");
@@ -12,7 +12,7 @@ $cachefilename = $config['cache_dir'] .'/'. $cachename . ".html";
 
 // display cache if the file exists:
 // TODO: automatically expire the cache after a certain time
-if (file_exists($cachefilename) && !empty($_ENV['BATO_ENV']) && $_ENV['BATO_ENV'] == 'production') { 
+if (file_exists($cachefilename) && !empty($_ENV['TOTORO_ENV']) && $_ENV['TOTORO_ENV'] == 'production') { 
   include $cachefilename;
   exit;
 }

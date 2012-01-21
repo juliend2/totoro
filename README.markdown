@@ -1,7 +1,7 @@
-Bato
-====
+Totoro
+======
 
-Bato is a featherweight blog engine for the Alpha-Geek.
+Totoro is a featherweight blog engine for the Alpha-Geek.
 
 Features
 --------
@@ -29,7 +29,7 @@ Installation
 Thanks
 ------
 
-Bato is inspired by [Toto](http://cloudhead.io/toto). Give it a shot, it's
+Totoro is inspired by [Toto](http://cloudhead.io/toto). Give it a shot, it's
 pretty cool.
 
 MIT License
