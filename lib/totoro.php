@@ -6,11 +6,13 @@ include 'lib/php-markdown/markdown.php';
 define('POSTS_DIR', $config['posts_dir']);
 ini_set('date.timezone', $config['date.timezone']);
 
+// get the post's URL
 function post_url($post) {
   global $config;
   return "{$config['base_url']}/{$post['year']}/{$post['month']}/{$post['day']}/{$post['slug']}";
 }
 
+// get the post's settings from it's file header
 function get_post_settings($post_header) {
   $lines = explode("\n", $post_header);
   $settings = array();
@@ -38,6 +40,7 @@ function get_extension($basename) {
   }
 }
 
+// get a post by it's year, month, day, slug and (optionally) file extension
 function get_post($year, $month, $day, $slug, $ext='textile') {
   $ext = get_extension("$year-$month-$day-$slug");
   $file = @file_get_contents(POSTS_DIR."/$year-$month-$day-$slug.$ext");
@@ -74,40 +77,38 @@ function grab_posts($post_files) {
 
 // Helper functions
 
+// do we have an uri? return false if we're at the root of the domain
 function has_uri() {
   return isset($_GET['uri']);
 }
 
-function truncate($string, $max = 20, $replacement = '…') {
-  if (strlen($string) <= $max) {
-    return $string;
-  }
-  $leave = $max - strlen ($replacement);
-  return substr_replace($string, $replacement, $leave);
-}
-
+// textile formatting. takes a string of textile
 function textile($input) {
   $textile = new Textile();
   return $textile->textileThis($input);
 }
 
+// debugging helper
 function pr($var) {
   echo '<pre>';
   print_r($var);
   echo '</pre>';
 }
 
+// get a theme file path. takes a file basename string
 function theme_file($file) {
   global $config;
   return "./themes/{$config['theme']}/{$file}";
 }
 
+// get the current theme's url
 function theme_url() {
   global $config;
   return $config['base_url'] . '/themes/' . $config['theme'];
 }
 
-// took from: http://snippets.dzone.com/posts/show/7125
+// truncate html string, by closing the tags properly where needed
+// taken from: http://snippets.dzone.com/posts/show/7125
 function truncate_html($text, $length, $suffix = '&hellip;', $isHTML = true){
   $i = 0;
   $simpleTags=array('br'=>true,'hr'=>true,'input'=>true,'image'=>true,'link'=>true,'meta'=>true);
@@ -151,6 +152,7 @@ function truncate_html($text, $length, $suffix = '&hellip;', $isHTML = true){
   return $output;
 }
 
+// get the excerpt of a post's content
 function excerpt($content) {
   global $config;
   return truncate_html(strip_tags($content, '<p><br>'), $config['max']);
