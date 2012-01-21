@@ -9,6 +9,7 @@ $config = array(
   'posts_dir' => './posts',
   'cache_dir' => './cache',
   'max' => 150,
+  'posts_per_page' => 2,
   'date.timezone' => 'America/Montreal', // see: http://www.php.net/manual/fr/timezones.php
   // 'disqus_shortname' => '', // subscribe to disqus.com to get your shortname
 );
