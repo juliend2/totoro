@@ -1,6 +1,8 @@
 Totoro
 ======
 
+![Totoro](http://s.juliendesrosiers.ca/totoro-cement-wall.png)
+
 Totoro is a featherweight blog engine for the Alpha-Geek.
 
 Features
