@@ -97,6 +97,11 @@ function pr($var) {
   echo '</pre>';
 }
 
+function theme_file($file) {
+  global $config;
+  return "./themes/{$config['theme']}/{$file}";
+}
+
 function theme_url() {
   global $config;
   return $config['base_url'] . '/themes/' . $config['theme'];
