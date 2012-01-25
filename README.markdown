@@ -35,7 +35,7 @@ If you're using TOTORO_ENV in your config.php to detect the current
 environment, you might want to set the environment in your .htaccess file, like
 this:
 
-SetEnv TOTORO_ENV production
+    SetEnv TOTORO_ENV production
 
 Thanks
 ------
