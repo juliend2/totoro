@@ -28,6 +28,15 @@ Installation
 5. (optional) if you wish to have Disqus comments, first create an account
    on disqus.com. Then paste the 'disqus_shortname' in your config.php.
 
+Notes for deployment
+--------------------
+
+If you're using TOTORO_ENV in your config.php to detect the current
+environment, you might want to set the environment in your .htaccess file, like
+this:
+
+SetEnv TOTORO_ENV production
+
 Thanks
 ------
 
