@@ -49,9 +49,6 @@ function get_post($year, $month, $day, $slug, $ext='textile') {
   if (count($split_post_file) != 2) return false;
   $post_settings = get_post_settings($split_post_file[0]);
   if (!isset($post_settings['title'])) return false;
-  // set function to be called to compile in HTML:
-  if ($ext == 'md' || $ext == 'markdown') { $func = 'Markdown'; }
-  elseif ($ext == 'textile') { $func = $ext; }
 
   return array(
     'year' => $year,
@@ -59,8 +56,16 @@ function get_post($year, $month, $day, $slug, $ext='textile') {
     'day' => $day,
     'slug' => $slug,
     'title' => trim($post_settings['title']),
-    'content' => isset($func) ? $func($split_post_file[1]) : $split_post_file[1]
+    'content' => get_html($split_post_file[1], $ext)
   );
+}
+
+// get html from (markdown|textile|html) string
+function get_html($string, $ext) {
+  // set function to be called to compile in HTML:
+  if ($ext == 'md' || $ext == 'markdown') { $func = 'Markdown'; }
+  elseif ($ext == 'textile') { $func = $ext; }
+  return isset($func) ? $func($string) : $string;
 }
 
 // Grab all the post files
