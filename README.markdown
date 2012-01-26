@@ -9,10 +9,12 @@ Features
 --------
 
 * RSS feed
-* all the posts are stored on the file system, in Markdown, Textile or HTML
-* simple file-based caching of pages
+* All the posts are stored on the file system, in Markdown, Textile or HTML
+* Simple file-based caching of pages
 * Disqus comments are supported in the default theme
 * Themeable (includes a simple default theme)
+* The markdown pages that are in `pages/<name-of-page>.md` are accessible from
+  /name-of-page
 
 Installation
 ------------
