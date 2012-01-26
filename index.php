@@ -35,6 +35,17 @@ if (!has_uri()) {
     else {
       header("HTTP/1.0 404 Not Found");
     }
+  // pages
+  } elseif (preg_match('/^\/([^\.\/]+)/i', $_GET['uri'], $matches)) {
+    $page_file = 'pages/'.$matches[1].'.md';
+    if (file_exists($page_file)) {
+      $page_content = get_html(@file_get_contents($page_file), 'md');
+      $view = "./themes/{$config['theme']}/page.php";
+      include "./themes/{$config['theme']}/layout.php";
+    } else {
+      header("HTTP/1.0 404 Not Found");
+    }
+  // rss
   } elseif ($_GET['uri'] == '/rss') {
     header("Content-Type: application/rss+xml; charset=utf-8");
     include "./themes/{$config['theme']}/rss.php";
