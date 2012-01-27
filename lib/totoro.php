@@ -163,3 +163,16 @@ function excerpt($content) {
   return truncate_html(strip_tags($content, '<p><br>'), $config['max']);
 }
 
+// shortcut for create_function()
+function f($args_string, $func_string) {
+  return create_function($args_string, $func_string);
+}
+
+// like array_map(), but you can pass an associative array and have 2 arguments in your callback
+// ex: hash_map($associative_array, f('$key, $value', 'return $key."=".$value;'));
+function hash_map($array, $callback) {
+  $keys = array_keys($array);
+  $values = array_values($array);
+  return array_map($callback, $keys, $values);
+}
+
