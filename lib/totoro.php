@@ -4,6 +4,7 @@ include 'lib/classTextile.php';
 include 'lib/php-markdown/markdown.php';
 
 define('POSTS_DIR', $config['posts_dir']);
+define('PAGES_DIR', $config['pages_dir']);
 ini_set('date.timezone', $config['date.timezone']);
 
 // get the post's URL
@@ -26,14 +27,15 @@ function get_post_settings($post_header) {
 }
 
 // takes a file's basename and return it's extension if it exists
-function get_extension($basename) {
-  if       (file_exists(POSTS_DIR."/$basename.textile")) {
+function get_extension($basename, $is_page=false) {
+  $base_dir = $is_page ? PAGES_DIR : POSTS_DIR;
+  if       (file_exists($base_dir."/$basename.textile")) {
     return 'textile';
-  } elseif (file_exists(POSTS_DIR."/$basename.md")) {
+  } elseif (file_exists($base_dir."/$basename.md")) {
     return 'md';
-  } elseif (file_exists(POSTS_DIR."/$basename.markdown")) {
+  } elseif (file_exists($base_dir."/$basename.markdown")) {
     return 'markdown';
-  } elseif (file_exists(POSTS_DIR."/$basename.html")) {
+  } elseif (file_exists($base_dir."/$basename.html")) {
     return 'html';
   } else { // file not found
     return false;
@@ -62,6 +64,7 @@ function get_post($year, $month, $day, $slug, $ext='textile') {
 
 // get html from (markdown|textile|html) string
 function get_html($string, $ext) {
+  if ($ext == 'html') return $string;
   // set function to be called to compile in HTML:
   if ($ext == 'md' || $ext == 'markdown') { $func = 'Markdown'; }
   elseif ($ext == 'textile') { $func = $ext; }

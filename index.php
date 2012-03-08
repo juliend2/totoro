@@ -39,11 +39,13 @@ if (!has_uri()) {
       header("HTTP/1.0 404 Not Found");
     }
   // pages
-  } elseif (preg_match('/^\/([^\.\/]+)/i', $_GET['uri'], $matches) && file_exists('pages/'.$matches[1].'.md')) {
+  } elseif (preg_match('/^\/([^\.\/]+)/i', $_GET['uri'], $matches) && 
+            (file_exists('pages/'.$matches[1].'.md') || file_exists('pages/'.$matches[1].'.html')) ) {
     $section_name = $matches[1];
-    $page_file = 'pages/'.$matches[1].'.md';
+    $ext = get_extension($matches[1], true);
+    $page_file = 'pages/'.$matches[1].'.'.$ext;
     if (file_exists($page_file)) {
-      $page_content = get_html(@file_get_contents($page_file), 'md');
+      $page_content = get_html(@file_get_contents($page_file), $ext);
       $view = "./themes/{$config['theme']}/page.php";
       include "./themes/{$config['theme']}/layout.php";
     } else {

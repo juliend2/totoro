@@ -7,6 +7,7 @@ $config = array(
   'blog_description' => "This is a brand new Totoro Blog.",
   'theme' => 'default',
   'posts_dir' => './posts',
+  'pages_dir' => './pages',
   'cache_dir' => './cache',
   'max' => 150,
   'posts_per_page' => 2,
