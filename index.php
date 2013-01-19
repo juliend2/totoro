@@ -33,7 +33,7 @@ if (!has_uri()) {
 } else {
   // posts
   if (preg_match('/^\/(\d{4})\/(\d{2})\/(\d{2})\/([^\.\/]+)/i', $_GET['uri'], $matches)) {
-    $post = get_post($matches[1],$matches[2],$matches[3],$matches[4]);
+    $post = new Post($matches[1],$matches[2],$matches[3],$matches[4]);
     if ($post) {
       $response->add_vars(compact('post'))
         ->set_view(theme_file('post.php'))
@@ -46,10 +46,10 @@ if (!has_uri()) {
   } elseif (preg_match('/^\/([^\.\/]+)/i', $_GET['uri'], $matches) && 
             (file_exists('pages/'.$matches[1].'.md') || file_exists('pages/'.$matches[1].'.html')) ) {
     $section_name = $matches[1];
-    $ext = get_extension($matches[1], true);
+    $ext = Post::get_extension($matches[1], true);
     $page_file = 'pages/'.$matches[1].'.'.$ext;
     if (file_exists($page_file)) {
-      $page_content = get_html(@file_get_contents($page_file), $ext);
+      $page_content = Post::get_html(@file_get_contents($page_file), $ext);
       $response->add_vars(compact('page_content'))
         ->set_view(theme_file('page.php'))
         ->send();

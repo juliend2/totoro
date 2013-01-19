@@ -1,5 +1,5 @@
-<h2><?php echo $post['title'] ?></h2>
-<?php echo $post['content'] ?>
+<h2><?php echo $post->title ?></h2>
+<?php echo $post->content ?>
 
 <?php if (isset($config['disqus_shortname'])): ?>
 <div id="disqus_thread"></div>

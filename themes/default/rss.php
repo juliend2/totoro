@@ -8,10 +8,10 @@
       <link><?php echo $config['base_url'] ?></link>
         <?php foreach($posts as $post): ?> 
         <item>
-          <title><?php echo $post['title'] ?></title>
-          <description><?php echo '<![CDATA['. excerpt($post['content']) .']]>'; ?></description>
-          <pubDate><?php echo date("D, d M Y H:i:s", strtotime($post['year'].'-'.$post['month'].'-'.$post['day'])) ?></pubDate>
-          <link><?php echo post_url($post) ?></link>
+          <title><?php echo $post->title ?></title>
+          <description><?php echo '<![CDATA['. $post->get_excerpt() .']]>'; ?></description>
+          <pubDate><?php echo date("D, d M Y H:i:s", strtotime($post->year.'-'.$post->month.'-'.$post->day)) ?></pubDate>
+          <link><?php echo $post->get_url() ?></link>
         </item>
         <?php endforeach ?> 
     </channel>

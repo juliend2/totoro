@@ -4,9 +4,9 @@ $index = isset($_GET['page']) ? $_GET['page'] : 1;
 ?>
 
 <?php foreach($page_posts[$index-1] as $post):?>
-  <h2><a href="<?php echo post_url($post) ?>"><?php echo $post['title'] ?></a></h2>
-  <h3 class="date"><?php echo strftime('%B %e, %Y', strtotime($post['year'].'-'.$post['month'].'-'.$post['day'])) ?></h3>
-  <?php echo excerpt($post['content']) ?> 
+  <h2><a href="<?php echo $post->get_url() ?>"><?php echo $post->title ?></a></h2>
+  <h3 class="date"><?php echo strftime('%B %e, %Y', strtotime($post->year.'-'.$post->month.'-'.$post->day)) ?></h3>
+  <?php echo $post->get_excerpt() ?> 
 <?php endforeach ?>
 
 </section>
