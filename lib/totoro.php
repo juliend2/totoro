@@ -8,32 +8,32 @@ define('PAGES_DIR', $config['pages_dir']);
 ini_set('date.timezone', $config['date.timezone']);
 
 class Response {
-  function __construct($outer_vars) {
+  public function __construct($outer_vars) {
     $this->status_code = 200;
     $this->content_type = 'text/html';
     $this->view = 'index.php';
     $this->outer_vars = $outer_vars;
   }
-  function add_vars($outer_vars) {
+  public function add_vars($outer_vars) {
     // previous variables will be overriden by new with same name
     $this->outer_vars = array_merge($this->outer_vars, $outer_vars);
     return $this;
   }
   // setters
-  function set_view($path) {
+  public function set_view($path) {
     $this->view = $path;
     return $this;
   }
-  function set_status($code) {
+  public function set_status($code) {
     $this->status_code = $code;
     return $this;
   }
-  function set_content_type($type) {
+  public function set_content_type($type) {
     $this->content_type = $type;
     return $this;
   }
   // response methods
-  function respond_with_header() {
+  private function respond_with_header() {
     if ($this->status_code == 404) {
       header("HTTP/1.0 404 Not Found");
     } else {
@@ -45,12 +45,12 @@ class Response {
       }
     }
   }
-  function respond_with_layout() {
+  private function respond_with_layout() {
     extract($this->outer_vars);
     $view = $this->view;
     include "./themes/{$config['theme']}/layout.php";
   }
-  function respond_with_body() {
+  private function respond_with_body() {
     extract($this->outer_vars);
     if ($this->status_code == 404) {
       $this->view = '404.php';
@@ -64,7 +64,7 @@ class Response {
       }
     } 
   }
-  function send() {
+  public function send() {
     $this->respond_with_header();
     $this->respond_with_body();
   }
