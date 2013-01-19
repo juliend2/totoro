@@ -1,7 +1,6 @@
 <?php
 include 'lib/totoro.php';
 
-
 // posts variables:
 $post_files = glob(POSTS_DIR."/*.*");
 $current_post = array();
@@ -28,8 +27,7 @@ $section_name = 'blog';
 // Basic URL Routing:
 if (!has_uri()) {
   // home
-  $view = theme_file("home.php"); 
-  include theme_file("layout.php");
+  $response->set_view(theme_file("home.php"))->send();
 } else {
   // posts
   if (preg_match('/^\/(\d{4})\/(\d{2})\/(\d{2})\/([^\.\/]+)/i', $_GET['uri'], $matches)) {
@@ -71,6 +69,7 @@ $fp = fopen($cachefilename, 'w');
 fwrite($fp, ob_get_contents());
 fclose($fp);
 ob_end_flush(); // END output buffer
+
 
 
 
