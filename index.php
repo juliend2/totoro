@@ -1,10 +1,13 @@
 <?php
 include 'lib/totoro.php';
 
+
 // posts variables:
 $post_files = glob(POSTS_DIR."/*.*");
 $current_post = array();
 $posts = grab_posts($post_files);
+
+$response = new Response(compact('posts', 'config'));
 
 // caching variables:
 $index_file = 'index:'.implode('&', hash_map($_GET, f('$k,$v','return $k."=".$v;')));
@@ -32,11 +35,12 @@ if (!has_uri()) {
   if (preg_match('/^\/(\d{4})\/(\d{2})\/(\d{2})\/([^\.\/]+)/i', $_GET['uri'], $matches)) {
     $post = get_post($matches[1],$matches[2],$matches[3],$matches[4]);
     if ($post) {
-      $view = theme_file("post.php"); 
-      include theme_file("layout.php");
+      $response->add_vars(compact('post'))
+        ->set_view(theme_file('post.php'))
+        ->send();
     }
     else {
-      header("HTTP/1.0 404 Not Found");
+      $response->set_status(404)->send();
     }
   // pages
   } elseif (preg_match('/^\/([^\.\/]+)/i', $_GET['uri'], $matches) && 
@@ -46,17 +50,19 @@ if (!has_uri()) {
     $page_file = 'pages/'.$matches[1].'.'.$ext;
     if (file_exists($page_file)) {
       $page_content = get_html(@file_get_contents($page_file), $ext);
-      $view = "./themes/{$config['theme']}/page.php";
-      include "./themes/{$config['theme']}/layout.php";
+      $response->add_vars(compact('page_content'))
+        ->set_view(theme_file('page.php'))
+        ->send();
     } else {
-      header("HTTP/1.0 404 Not Found");
+      $response->set_status(404)->send();
     }
   // rss
   } elseif ($_GET['uri'] == '/rss') {
-    header("Content-Type: application/rss+xml; charset=utf-8");
-    include theme_file("rss.php");
+    $response->set_content_type('application/rss+xml')
+       ->set_view(theme_file("rss.php"))
+       ->send();
   } else {
-    header("HTTP/1.0 404 Not Found");
+    $response->set_status(404)->send();
   }
 }
 
@@ -65,5 +71,6 @@ $fp = fopen($cachefilename, 'w');
 fwrite($fp, ob_get_contents());
 fclose($fp);
 ob_end_flush(); // END output buffer
+
 
 
