@@ -17,7 +17,7 @@ $cachefilename = $config['cache_dir'] .'/'. $cachename . ".html";
 // display cache if the file exists:
 // TODO: automatically expire the cache after a certain time
 if (file_exists($cachefilename) && !empty($_ENV['TOTORO_ENV']) && $_ENV['TOTORO_ENV'] == 'production') { 
-  include $cachefilename;
+  echo @file_get_contents($cachefilename);
   exit;
 }
 
