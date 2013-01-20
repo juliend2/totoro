@@ -23,6 +23,18 @@ function grab_posts($post_files) {
 
 // Helper functions
 
+function the_title() {
+  echo get_the_title();
+}
+
+function get_the_title() {
+  global $post, $config;
+  $glue = ' | ';
+  $title_elements = array( $config['blog_title'] );
+  if (isset($post)) array_unshift($title_elements, $post->title);
+  return implode($glue, $title_elements);
+}
+
 // do we have an uri? return false if we're at the root of the domain
 function has_uri() {
   return isset($_GET['uri']);
@@ -110,5 +122,6 @@ function hash_map($array, $callback) {
   $values = array_values($array);
   return array_map($callback, $keys, $values);
 }
+
 
 

@@ -36,8 +36,7 @@ if (!has_uri()) {
       $response->add_vars(compact('post'))
         ->set_view(theme_file('post.php'))
         ->send();
-    }
-    else {
+    } else {
       $response->set_status(404)->send();
     }
   // pages
