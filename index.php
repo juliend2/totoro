@@ -46,8 +46,10 @@ if (!has_uri()) {
     $ext = Post::get_extension($matches[1], true);
     $page_file = 'pages/'.$matches[1].'.'.$ext;
     if (file_exists($page_file)) {
-      $page_content = Post::get_html(@file_get_contents($page_file), $ext);
-      $response->add_vars(compact('page_content'))
+      $page_code = @file_get_contents($page_file);
+      $page_content = Post::get_html($page_code, $ext);
+      $page_title = get_page_title($page_code, $ext);
+      $response->add_vars(compact('page_content', 'page_title'))
         ->set_view(theme_file('page.php'))
         ->send();
     } else {
@@ -68,7 +70,5 @@ $fp = fopen($cachefilename, 'w');
 fwrite($fp, ob_get_contents());
 fclose($fp);
 ob_end_flush(); // END output buffer
-
-
 
 

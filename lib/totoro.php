@@ -9,6 +9,15 @@ include 'lib/php-markdown/markdown.php';
 include 'lib/response.class.php';
 include 'lib/post.class.php';
 
+function get_page_title($page_code, $ext='md') {
+  if ($ext == 'md' || $ext == 'markdown') {
+    preg_match('|^(.*)\n={3,}|m', $page_code, $matches);
+  } elseif ($ext == 'html') {
+    preg_match('|^<h1>(.*)</h1>|mi', $page_code, $matches);
+  }
+  return isset($matches[1]) ? trim($matches[1]) : false;
+}
+
 // Grab all the post files
 function grab_posts($post_files) {
   $posts = array();
@@ -28,10 +37,11 @@ function the_title() {
 }
 
 function get_the_title() {
-  global $post, $config;
+  global $post, $config, $page_title;
   $glue = ' | ';
   $title_elements = array( $config['blog_title'] );
   if (isset($post)) array_unshift($title_elements, $post->title);
+  if (isset($page_title)) array_unshift($title_elements, $page_title);
   return implode($glue, $title_elements);
 }
 
@@ -122,6 +132,4 @@ function hash_map($array, $callback) {
   $values = array_values($array);
   return array_map($callback, $keys, $values);
 }
-
-
 
